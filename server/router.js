@@ -1,8 +1,5 @@
+var Auth=require('./controllers/auth.js'),
+	User=require('./models/user');
 module.exports=app=>{
-	app.get('/',(req,res,next)=>{
-		res.send("HELLO HOMEPAGE");
-	});
-	app.get('/signup',(req,res,next)=>{
-		res.send("SIGNUP");
-	})
+	app.post('/signup',Auth.signup);
 }
