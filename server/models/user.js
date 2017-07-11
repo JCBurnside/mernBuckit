@@ -7,5 +7,17 @@ var mongoose=require('mongoose'),
 			lowercase:true
 		},
 		password:String
-	});
+	}),
+	bcrypt=require('bcrypt-nodejs');
+	userSchema.pre('save',next=>{
+		var user=this;
+		bcrypt.genSalt(10,(err,salt)=>{
+			if(err)return next(err);
+			bcrypt.hash(user.password,salt,null,(err,hass)=>{
+				if(err)return next(err);
+				user.password=hash;
+				next();
+			})
+		})
+	})
 module.exports=mongoose.model('user',userSchema);

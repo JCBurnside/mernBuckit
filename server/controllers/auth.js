@@ -2,6 +2,8 @@ var User=require('../models/user');
 exports.signup = (req,res,next)=>{
 	var email=req.body.email.toLowerCase(),
 		password=req.body.password;
+	if(!email||!password)
+		return res.status(418).send({error:"Email or password not provided"});
 	User.findOne({email:email},(err,existingUser)=>{
 		if(err)
 			return next(err);
