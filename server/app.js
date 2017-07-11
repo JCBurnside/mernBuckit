@@ -3,7 +3,9 @@ var express=require('express'),
 	bodyParser=require('body-parser'),
 	port=process.env.PORT||3000,
 	app=express(),
+	mongoose=require('mongoose'),
 	router=require('./router');
+mongoose.connect('mongodb://localhost:bucket/bucket');
 app.use(bodyParser.json({type:'*/*'}));
 router(app);
 
