@@ -9,8 +9,9 @@ var mongoose=require('mongoose'),
 		password:String
 	}),
 	bcrypt=require('bcrypt-nodejs');
-userSchema.pre('save',next=>{
+userSchema.pre('save',function(next){
 	var user=this;
+	console.log("IN PRE-SAVE")
 	bcrypt.genSalt(10,(err,salt)=>{
 		if(err){
 			console.log("GEN SALT ERRORED")
@@ -21,6 +22,7 @@ userSchema.pre('save',next=>{
 				console.log("HASH FAILED");
 				return next(err);
 			}
+			console.log(hash);
 			user.password=hash;
 			next();
 		})
