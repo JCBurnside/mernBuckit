@@ -1,5 +1,5 @@
-import {combineRducers} from 'redux';
-const rootReducer=combineRducers({
+import {combineReducers} from 'redux';
+const rootReducer=combineReducers({
 	state:(state={})=>state
 })
 export default rootReducer;
