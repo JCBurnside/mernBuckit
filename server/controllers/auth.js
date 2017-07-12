@@ -26,3 +26,6 @@ exports.signup = (req,res,next)=>{
 		});
 	})
 };
+exports.signin=(_,res)=>{
+	res.send({token:createUserToken(req.user)})
+}

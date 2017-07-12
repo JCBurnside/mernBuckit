@@ -12,9 +12,15 @@ var mongoose=require('mongoose'),
 userSchema.pre('save',next=>{
 	var user=this;
 	bcrypt.genSalt(10,(err,salt)=>{
-		if(err)return next(err);
+		if(err){
+			console.log("GEN SALT ERRORED")
+			return next(err);
+		}
 		bcrypt.hash(user.password,salt,null,(err,hash)=>{
-			if(err)return next(err);
+			if(err){
+				console.log("HASH FAILED");
+				return next(err);
+			}
 			user.password=hash;
 			next();
 		})
