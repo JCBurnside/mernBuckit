@@ -1,5 +1,8 @@
 import {combineReducers} from 'redux';
+import BandsReducer from './reducerBands'
+import Tasks from './Tasks'
 const rootReducer=combineReducers({
-	state:(state={})=>state
+	bands:BandsReducer,
+	tasks:Tasks
 })
 export default rootReducer;
