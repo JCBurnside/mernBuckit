@@ -1,4 +1,5 @@
 import axios from 'axios';
+import {browserHistory} from 'react-router'
 export const SELECT_BAND='SELECT_BAND';
 export function selectBand(band){
 	console.log("You have selected "+band.name)
@@ -19,6 +20,9 @@ export function createPost(props){
 }
 export function signinUser({email,password}){
 	return function(dispatch){
-		axios.post(`${ROOT_URL}/signin`,{email,password})
+		axios.post(`${ROOT_URL}/signin`,{email,password}).then(
+			res=>{
+				browserHistory.push('/newItem');
+			}).catch(console.log)
 	}
 }
