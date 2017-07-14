@@ -14,12 +14,14 @@ class Tasks extends Component{
 	render(){
 		return(
 			<table className="table table-striped">
-				<tbody>
+				<thead>
 					<tr>
 						<th>Item</th>
 						<th>Category</th>
 						<th>Finish By</th>
 					</tr>
+				</thead>
+				<tbody>
 					{this.renderList()}
 				</tbody>
 			</table>

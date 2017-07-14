@@ -18,7 +18,7 @@ class NavBarHeader extends Component{
 						<MenuItem eventKey={3.2}>Another Action</MenuItem>
 						<MenuItem eventKey={3.3}>Something else here</MenuItem>
 						<MenuItem divider/>
-						<MenuItem eventKey={3.3}>Separated link</MenuItem>
+						<MenuItem eventKey={3.4}>Separated link</MenuItem>
 					</NavDropdown>
 				</Nav>
 			</Navbar>
