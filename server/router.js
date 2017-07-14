@@ -5,8 +5,14 @@ var Auth=require('./controllers/auth.js'),
 	requireAuth=passport.authenticate('jwt',{session:false});
 module.exports=app=>{
 	app.get('/',requireAuth,(req,res)=>{
-		res.send('Hello Homepage');
+		res.send({message:'hey'});
 	})
+	// app.use((req,res,next)=>{
+	// 	res.header('access-control-allow-origin','*');//allow all cross-origin request
+	// 	res.header('access-control-allow-methods','GET,POST,PUT,DELETE');
+	// 	res.header('access-control-allow-headers','Origin,X-Requested-With,Content-Type,Accept,Authorization');
+	// 	next();
+	// });
 	app.post('/signup',Auth.signup);
 	app.post('/signin',requireSignin,Auth.signin);
 }

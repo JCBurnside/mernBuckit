@@ -4,8 +4,10 @@ var express=require('express'),
 	port=process.env.PORT||3000,
 	app=express(),
 	mongoose=require('mongoose'),
-	router=require('./router');
+	router=require('./router'),
+	cors=require('cors');
 mongoose.connect('mongodb://localhost:bucket/bucket');
+app.use(cors());
 app.use(bodyParser.json({type:'*/*'}));
 router(app);
 
