@@ -8,14 +8,14 @@ class Signin extends Component{
 	renderAlert(){
 		if(this.props.errMessage){
 			return(
-				<div className="alert alert-danger">
+				<div className="alert alert-danger form-control">
 					<strong>Sorry partner</strong>{this.props.errMessage}
 				</div>
 			);
 		}
 	}
 	render(){
-		const {handleSubmit,fields:{email,password}}=this.props;
+		const {handleSubmit,fields:{email,password},reset}=this.props;
 		return(
 			<form onSubmit={handleSubmit(this.handleFormSubmit.bind(this))}>
 				<fieldset className="form-group">
@@ -24,10 +24,11 @@ class Signin extends Component{
 				</fieldset>
 				<fieldset className="form-group">
 					<label>Password:</label>
-					<input {...password} className="form-control"/>
+					<input {...password} type="password" className="form-control"/>
 				</fieldset>
 				{this.renderAlert()}
 				<button action="submit" className="btn btn-primary">Sign in</button>
+				<button onCick={reset}>Clear</button>
 			</form>
 		);
 	}
