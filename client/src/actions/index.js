@@ -1,11 +1,11 @@
 import axios from 'axios';
-import {browserHistory} from 'react-router'
+import {browserHistory} from 'react-router';
+import {AUTH_USER,UNAUTH_USER} from './types';
 export const SELECT_BAND='SELECT_BAND';
 export function selectBand(band){
 	console.log("You have selected "+band.name)
-	return{
-		type:SELECT_BAND,
-		payload:band
+	return function(dispatch){
+		dispatch({type:SELECT_BAND,payload:band})
 	}
 }
 export const CREATE_POSTS='CREATE_POSTS';
@@ -22,6 +22,9 @@ export function signinUser({email,password}){
 	return function(dispatch){
 		axios.post(`${ROOT_URL}/signin`,{email,password}).then(
 			res=>{
+				dispatch({type:AUTH_USER})
+
+				localStorage.setItem('token',res.data.token);
 				browserHistory.push('/newItem');
 			}).catch(console.log)
 	}
