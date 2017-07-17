@@ -6,14 +6,11 @@ import {bindActionCreators}from 'redux';
 
 class BandDetial extends Component{
 	render(){
-		var band;
-		if(!this.props.band)band=this.props.default;
-		else band=this.props.band
 		return(
 			<div>
 				<h5>Detials for:</h5>
-				<h6>{band.name}</h6>
-				<img src={band.img}/>
+				<h6>{this.props.band.name}</h6>
+				<img src={this.props.band.img}/>
 			</div>
 		);
 	}
@@ -35,7 +32,7 @@ class BandList extends Component{
 				<ul className="list-group col-sm-4">
 					{this.renderList()}
 				</ul>
-				<BandDetial band={this.state.selectedBand} default={this.props.bands[0]}/>
+				<BandDetial band={this.props.selectedBand||this.props.bands[0]} />
 			</div>
 		);
 	}
@@ -46,7 +43,7 @@ function mapDispatchToProps(dispatch){
 function mapStateToProps(state) {
 	return{
 		bands:state.bands,
-		selectedBand:state.selectedBand
+		selectedBand:state.SelectedBand.selectedBand
 	};
 }
 export default connect(mapStateToProps,mapDispatchToProps)(BandList);

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import {browserHistory} from 'react-router';
-import {AUTH_USER,UNAUTH_USER} from './types';
+import {AUTH_USER,UNAUTH_USER,AUTH_ERROR} from './types';
 export const SELECT_BAND='SELECT_BAND';
 export function selectBand(band){
 	console.log("You have selected "+band.name)
@@ -18,6 +18,12 @@ export function createPost(props){
 		payload:request
 	}
 }
+export function authError(err){
+	return {
+		type:AUTH_ERROR,
+		payload:err
+	}
+}
 export function signinUser({email,password}){
 	return function(dispatch){
 		axios.post(`${ROOT_URL}/signin`,{email,password}).then(
@@ -26,6 +32,6 @@ export function signinUser({email,password}){
 
 				localStorage.setItem('token',res.data.token);
 				browserHistory.push('/newItem');
-			}).catch(console.log)
+			}).catch(res=>dispatch(authError("Bad Login Info")));
 	}
 }
