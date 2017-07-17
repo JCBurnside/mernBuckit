@@ -1,6 +1,7 @@
 var Auth=require('./controllers/auth.js'),
 	PS=require('./services/passport'),
 	passport=require('passport'),
+	BucketList=require('./controllers/bucketlistcontroller.js')
 	requireSignin=passport.authenticate('local',{session:false}),
 	requireAuth=passport.authenticate('jwt',{session:false});
 module.exports=app=>{
@@ -15,4 +16,5 @@ module.exports=app=>{
 	// });
 	app.post('/signup',Auth.signup);
 	app.post('/signin',requireSignin,Auth.signin);
+	app.post('/newitem',requireAuth,BucketList.addBucketList);
 }
