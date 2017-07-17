@@ -11,6 +11,7 @@ import NewPost from './components/list/NewPost';
 import BandList from './containers/BandList';
 import Signout from './components/Auth/Signout';
 import Signup from './components/Auth/Signup';
+import RequireAuth from './components/Auth/require_auth';
 
 var createStoreWithMiddleware= applyMiddleware(reduxThunk)(createStore);
 
@@ -19,7 +20,7 @@ ReactDOM.render(
 		<Router history={browserHistory}>
 			<Route path="/" component={App}>
 				<Route path="signin" component={Signin}/>
-				<Route path="newItem" component={NewPost}/>
+				<Route path="newItem" component={RequireAuth(NewPost)}/>
 				<Route path="bands" component={BandList}/>
 				<Route path="signout" component={Signout}/>
 				<Route path="signup" component={Signup}/>
