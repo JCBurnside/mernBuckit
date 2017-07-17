@@ -6,10 +6,10 @@ import {Link} from 'react-router';
 class NavBarHeader extends Component{
 	renderLinks(){
 		if(this.props.authenticated){
-			return <NavItem href="#">Sign Out</NavItem>
+			return <NavItem href="/signout">Sign Out</NavItem>
 		}
 		return [
-			<NavItem key={1} href="#">Sign In</NavItem>,
+			<NavItem key={1} href="/signin">Sign In</NavItem>,
 			<NavItem key={2} href="#">Sign Up</NavItem>
 		]
 	}
