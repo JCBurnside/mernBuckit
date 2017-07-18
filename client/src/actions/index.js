@@ -13,7 +13,7 @@ var config={
 }
 export function createPost(props){
 	return function(dispatch){
-		const request = axios.post(`${ROOT_URL}/posts`,{props},config);
+		const request = axios.post(`${ROOT_URL}/newitem`,{props},config)
 		.then(res=>{
 			dispatch({
 				type:CREATE_POSTS,
