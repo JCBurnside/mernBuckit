@@ -22,6 +22,7 @@ class ListItems extends Component{
 		return this.props.posts.map(PostItem);
 	}
 	render(){
+		console.log('IN LISTITEMS')
 		if(this.props.posts==0){
 			return <div><h3>Still Loading...</h3></div>
 		}
@@ -29,6 +30,7 @@ class ListItems extends Component{
 			<div className="col-md-4">
 				<div className="row">
 					<div className="col-sm-6 text-xs-left">
+						{console.log("TEST")}
 						<h3 className="text-xs-left">Lists</h3>
 					</div>
 					<div className="col-sm-6 text-xs-right">

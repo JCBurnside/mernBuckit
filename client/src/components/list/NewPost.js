@@ -10,6 +10,7 @@ class NewPost extends Component{
 	constructor(props){
 		super(props);
 	}
+
 	render(){
 		const {handleSubmit,fields:{title,category,url,content}}=this.props;
 		return(
@@ -32,7 +33,7 @@ class NewPost extends Component{
 					<textarea {...content} className="form-control text" rows="5"/>
 				</fieldset>
 				<button action="submit" className="btn btn-primary">Submit</button>
-				<Link to='/' className="btn btn-danger">Cancel</Link>
+				<Link to={'/items'} className="btn btn-danger">Cancel</Link>
 			</form>
 		);
 	}

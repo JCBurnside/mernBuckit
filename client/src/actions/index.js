@@ -47,7 +47,7 @@ export function signinUser({email,password}){
 				if(res.data.token){
 					dispatch({type:AUTH_USER})
 					localStorage.setItem('token',res.data.token);
-					browserHistory.push('/newItem');
+					browserHistory.push('/items');
 				}else{
 					dispatch(authError("SERVER ERROR"));
 				}
@@ -65,7 +65,7 @@ export function createUser({email,password}){
 				if(res.data.token){
 					dispatch({type:AUTH_USER})
 					localStorage.setItem('token',res.data.token);
-					browserHistory.push('/newItem');
+					browserHistory.push('/items');
 				}else{
 					dispatch(authError("SERVER ERROR"));
 				}
