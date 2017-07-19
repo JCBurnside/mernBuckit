@@ -6,3 +6,5 @@ export const SELECT_BAND='SELECT_BAND';
 export const CREATE_POSTS='CREATE_POSTS';
 export const FETCH_POSTS='FETCH_POSTS';
 export const FETCH_POST='FETCH_POST';
+export const UPDATE_POST='UPDATE_POST';
+export const DELETE_POST='DELETE_POST';

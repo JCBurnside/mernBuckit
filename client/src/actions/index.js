@@ -7,7 +7,10 @@ import {
 	CREATE_USER,
 	CREATE_POSTS,
 	SELECT_BAND,
-	FETCH_POSTS
+	FETCH_POSTS,
+	FETCH_POST,
+	DELETE_POST,
+	UPDATE_POST
 } from './types';
 export function selectBand(band){
 	console.log("You have selected "+band.name)
@@ -81,5 +84,42 @@ export function fetchPosts(){
 			});
 		})
 		.catch(console.log);
+	}
+}
+export function fetchPost(id){
+	return function(dispatch){
+		axios.get(`${ROOT_URL}/items/${id}`,config)
+		.then(res=>{
+				console.log("RESPONSE:",res);
+				dispatch({
+					type:FETCH_POST,
+					payload:res
+				});
+			}
+		);
+	}
+}
+export function deletePost(id) {
+	return function(dispatch){
+		axios.delete(`${ROOT_URL}/items/${id}`,config)
+		.then(res=>{
+			dispatch({
+				type:DELETE_POST,
+				payload:res
+			});
+			browserHistory.push('/items')
+		})
+	}
+}
+export function updatePost(props,id){
+	return function(dispatch){
+		axios.put(`${ROOT_URL}/items/${id}`,{props},config)
+		.then(res=>{
+			dispatch({
+				type:UPDATE_POST,
+				payload:res
+			});
+			browserHistory.push('/items');
+		});
 	}
 }
