@@ -30,3 +30,23 @@ exports.fetchBucketLists=function(req,res){
 		}
 	);
 }
+exports.fetchBucketList=function(req,res){
+	var specificBucketList=req.params.id;
+	BucketList.findOne({_id:specificBucketList})
+	.then(data=>{
+			res.json(data);
+		},err=>{
+			res.status(500).send(err.message);
+		}
+	);
+}
+exports.deleteBucketList=function(req,res) {
+	var specificBucketList=req.params.id;
+	BucketList.remove({_id:specificBucketList})
+	.then(data=>{
+			res.json(data);
+		},err=>{
+			res.status(500).send(err.message);
+		}
+	);
+}
