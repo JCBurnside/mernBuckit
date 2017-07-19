@@ -1,14 +1,22 @@
 import axios from 'axios';
 import {browserHistory} from 'react-router';
-import {AUTH_USER,UNAUTH_USER,AUTH_ERROR,CREATE_USER,CREATE_POSTS,SELECT_BAND} from './types';
+import {
+	AUTH_USER,
+	UNAUTH_USER,
+	AUTH_ERROR,
+	CREATE_USER,
+	CREATE_POSTS,
+	SELECT_BAND,
+	FETCH_POSTS
+} from './types';
 export function selectBand(band){
 	console.log("You have selected "+band.name)
 	return function(dispatch){
 		dispatch({type:SELECT_BAND,payload:band})
 	}
 }// const ROOT_URL='http://rest.learncode.academy/api/burnside';
-const ROOT_URL='http://localhost:3000';
-var config={
+export const ROOT_URL='http://localhost:3000';
+export var config={
 	headers:{authorization:localStorage.getItem('token')}
 }
 export function createPost(props){
@@ -60,5 +68,18 @@ export function createUser({email,password}){
 				}
 			}
 		).catch(err=>dispatch(authError(err)));
+	}
+}
+export function fetchPosts(){
+	return function(dispatch){
+		axios.get(`${ROOT_URL}/items`,config)
+		.then(res=>{
+			console.log("RESPONSE:",res);
+			dispatch({
+				type:FETCH_POSTS,
+				payload:res
+			});
+		})
+		.catch(console.log);
 	}
 }

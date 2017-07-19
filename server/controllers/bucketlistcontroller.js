@@ -1,8 +1,7 @@
 var BucketList=require('../models/bucketlist.js');
 exports.addBucketList=function(req,res,next){
-	console.log(req);
 	var title=req.body.title||req.body.props.title,
-		topic=req.body.topic||req.body.props.topic,
+		topic=req.body.topic||req.body.props.topic||req.body.props.category,
 		url=req.body.url||req.body.props.url,
 		content=req.body.content||req.body.props.content,
 		specificUser=req.body.user||req.user._id,

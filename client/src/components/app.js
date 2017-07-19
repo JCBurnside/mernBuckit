@@ -10,8 +10,8 @@ export default class App extends Component{
 			<div>
 				<NavBarHeader/>
 				{/*<BandList />
-				<Tasks/>*/}
-				<Video/>
+				<Tasks/>
+				<Video/>*/}
 				{this.props.children}
 			</div>
 		);
