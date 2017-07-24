@@ -3,6 +3,7 @@ var User=require('../models/user'),
 	config=require('../config');
 function createUserToken(user){
 	var timestamp=new Date().getTime();
+	console.log(user);
 	return jwt.encode({ sub:user.id, iat:timestamp },config.secret);
 }
 exports.signup = (req,res,next)=>{
